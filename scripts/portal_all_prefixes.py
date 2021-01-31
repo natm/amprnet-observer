@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Get all assignments from AMPRnet portal."""
 
-import datetime
+import json
 import logging
 import radix
 import requests
 import queue
 
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 LOG = logging.getLogger(__name__)
 
@@ -67,7 +68,7 @@ def main():
 
     # Build an object which we can persist daily
     persist = {
-        "timestamp": datetime.datetime.now(),
+        "timestamp": str(datetime.now()),
         "prefixes": []
     }
 
@@ -81,6 +82,11 @@ def main():
             "data": rnode.data
         }
         persist["prefixes"].append(prefix)
+
+    # write it to a file
+    filename = datetime.today().strftime('%Y%m%d')
+    with open(f"portal-dumps/{filename}.json", 'w') as outfile:
+        json.dump(persist, outfile, indent=4)
 
     LOG.info("Finished")
 
