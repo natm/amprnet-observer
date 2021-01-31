@@ -1,5 +1,5 @@
 {
-    "timestamp": "2021-01-31 01:53:23.320865",
+    "timestamp": "2021-01-31 21:43:23.217881",
     "prefixes": [
         {
             "prefix": "44.0.0.0/8",
@@ -2742,16 +2742,6 @@
             }
         },
         {
-            "prefix": "44.24.193.0/24",
-            "network": "44.24.193.0",
-            "masklen": 24,
-            "data": {
-                "type": "assignment",
-                "description": "TESTNET1 SEA",
-                "children": false
-            }
-        },
-        {
             "prefix": "44.24.194.0/24",
             "network": "44.24.194.0",
             "masklen": 24,
@@ -5318,6 +5308,16 @@
             "data": {
                 "type": "assignment",
                 "description": "W4RFJ Delaware County",
+                "children": false
+            }
+        },
+        {
+            "prefix": "44.56.192.0/24",
+            "network": "44.56.192.0",
+            "masklen": 24,
+            "data": {
+                "type": "assignment",
+                "description": "WC3XS experimental",
                 "children": false
             }
         },
@@ -10032,6 +10032,16 @@
             }
         },
         {
+            "prefix": "44.103.50.0/24",
+            "network": "44.103.50.0",
+            "masklen": 24,
+            "data": {
+                "type": "assignment",
+                "description": "W8MSU - Michigan State University",
+                "children": false
+            }
+        },
+        {
             "prefix": "44.104.0.0/16",
             "network": "44.104.0.0",
             "masklen": 16,
@@ -11088,16 +11098,6 @@
             "data": {
                 "type": "assignment",
                 "description": "K5AN (AS42615)",
-                "children": false
-            }
-        },
-        {
-            "prefix": "44.127.44.0/22",
-            "network": "44.127.44.0",
-            "masklen": 22,
-            "data": {
-                "type": "assignment",
-                "description": "Echolink/NPR/Winlink",
                 "children": false
             }
         },
