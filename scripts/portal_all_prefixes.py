@@ -44,13 +44,14 @@ class PortalScraper(object):
                 prefix = cols[0].text.replace(" ", "").replace("\n", "")
                 description = cols[1].text
                 rnode = self.rtree.add(prefix)
-                if cols[0].next_element.name == "a":
-                    relative_link = cols[0].next_element.attrs["href"]
-                    full_link = f"https://portal.ampr.org/{relative_link}"
-                    self.queue.put(full_link)
-                    has_children = True
-                else:
-                    has_children = False
+                has_children = False
+                for contents in cols[0].contents:
+                    if contents.name == "a":
+                        relative_link = contents.attrs["href"]
+                        full_link = f"https://portal.ampr.org/{relative_link}"
+                        self.queue.put(full_link)
+                        has_children = True
+
                 rnode.data["type"] = "assignment"
                 rnode.data["description"] = description
                 rnode.data["children"] = has_children
@@ -85,7 +86,7 @@ def main():
 
     # write it to a file
     filename = datetime.today().strftime('%Y%m%d')
-    with open(f"portal-dumps/{filename}.json", 'w') as outfile:
+    with open(f"dumps/portal/{filename}.json", 'w') as outfile:
         json.dump(persist, outfile, indent=4)
 
     LOG.info("Finished")
